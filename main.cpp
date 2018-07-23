@@ -1,4 +1,5 @@
 #include<iostream>
+#include "Network.h"
 
 using namespace std;
 
@@ -56,91 +57,100 @@ cin>>choice;
   return choice;
 }
 int main() {
+  Station stn;
+  stn.buildStations("stations.txt");
+  Network ntw;
+  ntw.buildNetwork("network.txt");
+  Line ln;
+  do {
 
-int choice = menu();
-
-  switch (choice) {
-    case 1:{
-      system("cls");
-      choice = netInfoMenu();
-        switch (choice) {
-          case 1:{
-
-            break;
-          }
-          case 2:{
-
-            break;
-          }
-          case 3:{
-
-            break;
-          }
-          case 5:{
-
-            break;
-          }
-          case 6:{
-
-            break;
-          }
-          case 7:{
-
-            break;
-          }
-        }
-      break;
-    }
-    case 2:{
-      system("cls");
-      choice = editNetMenu();
+    int choice = menu();
 
       switch (choice) {
         case 1:{
+          system("cls");
+          choice = netInfoMenu();
+            switch (choice) {
+              case 1:{
+                system("cls");
+              ntw.displayLinesForward();
+                break;
+              }
+              case 2:{
+                system("cls");
+                Station stat;
+                ln.traverseForward(stat);
+                break;
+              }
+              case 3:{
+                system("cls");
+                stn.displayStations();
+                break;
+              }
+              case 4:{
+                system("cls");
+                break;
+              }
+              case 5:{
+
+                break;
+              }
+              case 6:{
+
+                break;
+              }
+            }
           break;
         }
         case 2:{
+          system("cls");
+          choice = editNetMenu();
+
+          switch (choice) {
+            case 1:{
+              break;
+            }
+            case 2:{
+              break;
+            }
+            case 3:{
+              break;
+            }
+            case 5:{
+              break;
+            }
+            case 7:{
+              break;
+            }
+            case 8:{
+              break;
+            }
+            case 9:{
+              break;
+            }
+            case 10:{
+              break;
+            }
+            case 11:{
+              break;
+            }
+            case 12:{
+              break;
+            }
+
+          }
+
           break;
         }
         case 3:{
+
           break;
         }
         case 5:{
-          break;
-        }
-        case 7:{
-          break;
-        }
-        case 8:{
-          break;
-        }
-        case 9:{
-          break;
-        }
-        case 10:{
-          break;
-        }
-        case 11:{
-          break;
-        }
-        case 12:{
-          break;
-        }
 
+          break;
+        }
       }
-
-      break;
-    }
-    case 3:{
-
-      break;
-    }
-    case 5:{
-
-      break;
-    }
-  }
-
-
+  } while(/* condition */);
   return 0;
 }

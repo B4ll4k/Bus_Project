@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cstring>
 #include <fstream>
+#include <cstdlib>
 
 using namespace std;
 
@@ -29,6 +30,13 @@ class Stations {
 	int changed;
 	station * stationList; //dynamic array to hold the stations in the network
 	 Stations(); //constructor
+	 Station(char fileName[]){
+		 if(!buildStations(fileName))
+			 system("cls");
+			 cout<<"Error something occured reading the file!!";
+			 system("pause");
+			 exit(1);
+	 }
 	~ Stations(); //destructor
 	int addStation();
 	int deleteStation();
@@ -54,7 +62,7 @@ class Stations {
   			stnf >>this->stationList[i].stnId;
   			stnf >>this->stationList [i].name;
   		}
-  		return 2; //success
+  		return 1; //success
   	}else{
   		ofstream ofs(stnFileName);
   		if(!ofs)  return 1;      //unable to open file
@@ -90,7 +98,6 @@ class Stations {
 	void Stations::displayStations(){
 		if(this->stationList != NULL){
 			for (int i = 0; i < this->nbStations; i++) {
-					system("cls");
 					cout<< "Station Name: " << this->stationList[i].name;
 					cout<< "Station Id: "<< this->stationList[i].stnId;
 					cout<<endl<<endl;

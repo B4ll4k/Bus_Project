@@ -9,7 +9,7 @@ class List{
 		~List();
  node<T> * front;
  node<T> * back;
- 
+
  	bool isEmpty();
  	void insertFirst(T data);
  	void insertBack(T data);
@@ -25,13 +25,13 @@ class List{
  	void insertRangeAfter(node<T>* after, List<T> range);
   	void removeRange(node<T>* rangeFirst, node<T>* rangeLast);
   	List<T> getSublist(node<T>* rangeFirst, node<T>* rangeLast);
- 	
+
 };
 template <class T>
 		bool List<T>::isEmpty(){
         return front == NULL;
     	}
-template <class T>    	
+template <class T>
 		void List<T>::insertFirst(T data){
 
         node<T> * p = NULL;
@@ -155,11 +155,11 @@ template <class T>
 	};
 	template <class T>
   void List<T>::insertRangeAfter(node<T>* after, List<T> range){
-  	
+
   };
   template <class T>
   void List<T>::removeRange(node<T>* rangeFirst, node<T>* rangeLast){
-  	
+
   };
 template <class T>
 	List<T> List<T>::getSublist(node<T>* rangeFirst, node<T>* rangeLast){
@@ -169,4 +169,3 @@ template <class T>
 
 		return p;
 	};
-

@@ -13,8 +13,8 @@ class Network{
 	 Network();
 	~ Network();
 int lineIndex(int lineId);
-int buildNetwork(string netFileName);
-int updateNetFile(string netFileName);
+int buildNetwork(char netFileName[]);
+int updateNetFile(char netFileName[]);
 int noLinesPerStation(int stnId);
 int LineThrStation();
 int directLine(int stnId, int stnId2);
@@ -26,7 +26,7 @@ List<stationData> shortestPath();
 
 int Network::lineIndex(int lineId){
 			int j=0;
-		
+
 			while (j < nbLines) {
 					if(lineId == lines[j].lineNb)
 						return j;
@@ -52,18 +52,18 @@ int Network::buildNetwork(char netFileName[]) //build network from file
 //		prv = NULL;  // Initially, the linked list is empty
 		for(i=0; i<=nbLns-1; i++) {
 			netf >> this->lines[i].lineNb;
-			ntf >> this->lines[i].nbStations;
+			netf >> this->lines[i].nbStations;
 			for (j=1; j<=this->lines[i].nbStations; j++) {
-						ntf >> p.stnId;
-						ntf >> p.distance;
-						this->lines[i].stationsList.insertAfter(p, this->lines[i]. stationsList.back);
+						netf >> p.stnId;
+						netf >> p.distance;
+						this->lines[i].stationsList.insertAfter(this->lines[i].stationsList.back, p);
 			}
 		}
 		netf.close();
 		 return 1;
 	}
 	else{
-		ofstream ofs
+		ofstream ofs;
 		ofs.open(netFileName, ios::out);
 		if(!ofs)  return 1;      //unable to open file
 		ofs << 0 << '\n';
@@ -73,7 +73,7 @@ int Network::buildNetwork(char netFileName[]) //build network from file
 		}
 
 //The function updates the network file
-int Network::updateNetFile(string netFileName ){
+int Network::updateNetFile(char netFileName[]){
 	 node<stationData> *p;
 	 Line *  lns= this->lines;
 	 int nbLns= this->nbLines;
@@ -106,7 +106,7 @@ int Network::noLinesPerStation(int stnId){
 		while (j < this->nbLines) {
 			p = lines[j].stationsList.front;
 				for (int i = 0; i < lines[j].nbStations; i++) {
-						if(p->Data->stnId == stnId)
+						if(p->Data.stnId == stnId)
 							count++;
 						p = p->next;
 				}

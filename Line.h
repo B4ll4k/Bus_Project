@@ -55,7 +55,7 @@ void Line::deleteStation(node<stationData> * P){
 
 //Displays all informations of all stations when traversing a line in the forward direction
 void Line::traverseForward(Stations stns) {
- node<stationData> * p=Line:: stationsList.front;
+ node<stationData> * p=Line::stationsList.front;
 cout<<"Line: " << this->lineNb << endl;
  cout<<"No Stations: "<< this->nbStations<< endl;
 while (p  != NULL) {
